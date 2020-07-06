@@ -33,10 +33,21 @@ function listening() {
 }
 
 //GET route
-app.get('/all', sendData);
-function sendData(request, response) {
+app.get('/all', getData);
+
+function getData(request, response) {
     console.log("GET request received");
     response.send(projectData);
 }
 
 //POST Route
+const data = []; //first I create an empty array to hold data
+app.post('/add', addData);
+
+function addData(request, response) {
+    projectData.temp = request.body.temp;
+    projectData.date = request.body.date;
+    projectData.user_response = request.body.user_response;
+    console.log("POST request received");
+    response.send(projectData);
+}
