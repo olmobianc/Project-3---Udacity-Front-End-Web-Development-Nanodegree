@@ -10,4 +10,7 @@ To get the project up and running I followed these steps:
 4. Created async functions to fetch weather data and store it on my local server.
 5. Set up a function that updated UI dynamically.
 
-### Languages I used: HTML, CSS, Javascript
+## Languages I used: 
+1. HTML
+2. CSS
+3. Javascript
