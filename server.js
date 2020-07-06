@@ -24,3 +24,19 @@ app.use(express.static('website'));
 
 
 // Setup Server
+const port = 8000;
+const server = app.listen(port, listening);
+
+function listening() {
+    console.log("Server is running..");
+    console.log(`running on port ${port}`);
+}
+
+//GET route
+app.get('/all', sendData);
+function sendData(request, response) {
+    console.log("GET request received");
+    response.send(projectData);
+}
+
+//POST Route
