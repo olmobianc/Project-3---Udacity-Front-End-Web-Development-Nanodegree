@@ -47,7 +47,7 @@ app.post('/add', addData);
 function addData(request, response) {
     projectData.temp = request.body.temp;
     projectData.date = request.body.date;
-    projectData.user_response = request.body.user_response;
+    projectData.content = request.body.content;
     console.log("POST request received");
     response.send(projectData);
 }
