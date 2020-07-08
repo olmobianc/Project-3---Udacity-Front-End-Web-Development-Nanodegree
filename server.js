@@ -41,7 +41,6 @@ function getData(request, response) {
 }
 
 //POST Route
-const data = []; //first I create an empty array to hold data
 app.post('/add', addData);
 
 function addData(request, response) {
