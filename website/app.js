@@ -5,17 +5,20 @@ let d = new Date();
 let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
 
 // Personal API Key for OpenWeatherMap API
-CONST baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip=';
-CONST apiKey = '&APPID=515a96d2f824b84902e9acef36d94c63';
+const baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip=';
+const apiKey = '&APPID=515a96d2f824b84902e9acef36d94c63';
 
 // Event listener to add function to existing HTML DOM element
 document.getElementById('generate').addEventListener('click', performAction);
 
 /* Function called by event listener */
 function performAction() {
+
+    //get inputs from user
     const newZip = document.getElementById("zip").value;
     const content = document.getElementById('feelings').value;
 
+    //check if values inserted are incorrect
     if (newZip.length === 0 || content.length === 0) {
         alert("Data is not inserted correctly.. Please try again");
         return;
@@ -26,7 +29,7 @@ function performAction() {
         .then(function(data) {
         //add data to POST request
             postData('/add', { 
-                temp: data.main.temp,
+                temp: data.temp,
                 date: newDate, 
                 userInput: content 
             });
@@ -34,11 +37,12 @@ function performAction() {
 }
 
 /* Function to GET Web API Data*/
-const getWeatherData = async(baseURL, zip, apiKey) => {
-    const response = await fetch(baseURL + zip + apiKey);
+const getWeatherData = async(baseURL, newZip, apiKey) => {
+    const response = await fetch(baseURL + newZip + apiKey);
     try {
         const data = await response.json(); //convert the data object into json file
         console.log(data);
+        return data;
     } catch (error) {
         console.log("There was an error with your GET request", error);
     }
@@ -61,6 +65,7 @@ const postData = async (url = '', data = {}) => {
   
     try {
         const newData = await response.json();
+        console.log(newData);
         return newData;
     }
     catch (error) {

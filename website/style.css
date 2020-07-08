@@ -5,11 +5,11 @@ body{
 
 #app{
     display: grid;
-    grid-auto-rows: minmax(150px, auto);
+    grid-auto-rows: minmax(j20px, auto);
     /* grid-template-columns:  */
     height:100vh;
-    background: #f23557;
-    color: #f0d43a;
+    background: #0d469c;
+    color: sandybrown;
     justify-content: center;
     grid-gap: 1em;
     font-size: 20px;
@@ -21,7 +21,7 @@ body{
 }
 
 .entry{
-    background: rgba(59, 74, 107, .4);
+    background: #972131 ;
 }
 
 #entryHolder{
@@ -57,7 +57,7 @@ input{
     display:block;
     height: 60px;
     width: 320px;
-    background:#22b2da;
+    background:#2272da;
     color: #f0d43a;
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
@@ -67,7 +67,7 @@ input{
 button{
     width: 400px;
     height: 100px;
-    background: #3b4a6b;
+    background: #475f92;
     color: #f0d43a;
     font-size: 26px;
     font-family: 'Oswald', sans-serif;
@@ -79,7 +79,7 @@ h1{
 }
 
 textarea{
-    background:#22b2da;
+    background:#2272da;
     color: #f0d43a;
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
@@ -108,4 +108,13 @@ button:focus {
     color: #f0d43a; 
     font-family: 'Oswald', sans-serif;
 
-} 
+}
+
+#generate {
+    cursor: pointer;
+}
+
+#generate:hover {
+    opacity: 0.8;
+    color: #e7da24 !important;
+}
