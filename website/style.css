@@ -7,7 +7,6 @@ body{
     display: grid;
     grid-auto-rows: minmax(80px, auto);
     /* grid-template-columns:  */
-    height:100vh;
     background: #0d469c;
     color: sandybrown;
     justify-content: center;
@@ -18,6 +17,10 @@ body{
 
 .title {
     border-bottom: 2px solid sandybrown;
+}
+
+.main-container {
+    padding: 30px 0;
 }
 
 #app h3 {
@@ -48,7 +51,7 @@ input{
 
 button{
     width: 400px;
-    height: 100px;
+    height: 60px;
     background: #475f92;
     color: #f0d43a;
     font-size: 26px;
@@ -99,4 +102,8 @@ button:focus {
 #generate:hover {
     opacity: 0.8;
     color: #e7da24 !important;
+}
+
+.answer {
+    padding: 5px;
 }
