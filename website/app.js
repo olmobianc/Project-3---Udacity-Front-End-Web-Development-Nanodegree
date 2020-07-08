@@ -13,6 +13,7 @@ document.getElementById('generate').addEventListener('click', performAction);
 
 /* Function called by event listener */
 function performAction(e) {
+    e.preventDefault();
 
     //get inputs from user
     const newZip = document.getElementById("zip").value;
@@ -30,24 +31,26 @@ function performAction(e) {
         .then(function(data) {
             //add user data to POST request
             postData('/add', { 
-                temp: data.temp,
+                temp: data.main.temp, //adding main because we are taking the main temperature
                 date: newDate, 
-                content: content 
+                content: content
             });
         }).then(
             //update dinamically UI
             updateUI()
+        )    
+        /*TODO IN THE FUTURE    
         ).then(
             //update dinamically Weather Icon
             updateIcon()
-        )
+        )*/
 }
 
 /* Function to GET Web API Data*/
-const getWeatherData = async(baseURL, newZip, apiKey) => {
-    const response = await fetch(baseURL + newZip + apiKey);
+const getWeatherData = async(baseURL, zip, apiKey) => {
+    const res = await fetch(baseURL + zip + apiKey);
     try {
-        const data = await response.json(); //convert the data object into json file
+        const data = await res.json(); //convert the data object into json file
         console.log(data);
         return data;
 
