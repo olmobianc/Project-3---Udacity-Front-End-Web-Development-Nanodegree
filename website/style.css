@@ -5,7 +5,7 @@ body{
 
 #app{
     display: grid;
-    grid-auto-rows: minmax(j20px, auto);
+    grid-auto-rows: minmax(50px, auto);
     /* grid-template-columns:  */
     height:100vh;
     background: #0d469c;

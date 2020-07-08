@@ -12,28 +12,35 @@ const apiKey = '&APPID=515a96d2f824b84902e9acef36d94c63';
 document.getElementById('generate').addEventListener('click', performAction);
 
 /* Function called by event listener */
-function performAction() {
+function performAction(e) {
 
     //get inputs from user
     const newZip = document.getElementById("zip").value;
     const content = document.getElementById('feelings').value;
 
-    //check if values inserted are incorrect
+    //check if user values inserted are incorrect
     if (newZip.length === 0 || content.length === 0) {
         alert("Data is not inserted correctly.. Please try again");
         return;
     }
 
+    //main function call
     getWeatherData(baseURL, newZip, apiKey)
-        //chaining promises
+        //chaining promises with then()
         .then(function(data) {
-        //add data to POST request
+            //add user data to POST request
             postData('/add', { 
                 temp: data.temp,
                 date: newDate, 
-                userInput: content 
+                content: content 
             });
-        })
+        }).then(
+            //update dinamically UI
+            updateUI()
+        ).then(
+            //update dinamically Weather Icon
+            updateIcon()
+        )
 }
 
 /* Function to GET Web API Data*/
@@ -43,6 +50,7 @@ const getWeatherData = async(baseURL, newZip, apiKey) => {
         const data = await response.json(); //convert the data object into json file
         console.log(data);
         return data;
+
     } catch (error) {
         console.log("There was an error with your GET request", error);
     }
@@ -60,17 +68,29 @@ const postData = async (url = '', data = {}) => {
         body: JSON.stringify({
             temp: data.temp,
             date: data.date,
-            userInput: data.content }),  
-    });
+            content: data.content }),  
+    })
   
     try {
         const newData = await response.json();
         console.log(newData);
         return newData;
-    }
-    catch (error) {
+
+    } catch (error) {
         console.log("There was an error with your POST request", error);
     }
 }
 
-/* Function to GET Project Data */
+/* Function to dinamically update UI */
+const updateUI = async () => {
+    const request = await fetch('/all');
+    try {
+        const allData = await request.json();
+        document.getElementById('date').innerHTML = allData.date;
+        document.getElementById('temp').innerHTML = allData.temp;
+        document.getElementById('content').innerHTML = allData.content;
+  
+    } catch (error) {
+        console.log("There was an error updating the UI", error);
+    }
+}
