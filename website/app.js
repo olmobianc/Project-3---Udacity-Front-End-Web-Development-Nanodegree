@@ -35,10 +35,10 @@ function performAction(e) {
                 date: newDate, 
                 content: content
             });
-        }).then(
+        }).then(function() {
             //update dinamically UI
             updateUI()
-        )    
+        })    
         /*TODO IN THE FUTURE    
         ).then(
             //update dinamically Weather Icon

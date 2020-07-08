@@ -5,7 +5,7 @@ body{
 
 #app{
     display: grid;
-    grid-auto-rows: minmax(50px, auto);
+    grid-auto-rows: minmax(80px, auto);
     /* grid-template-columns:  */
     height:100vh;
     background: #0d469c;
@@ -16,35 +16,17 @@ body{
     font-family: 'Oswald', sans-serif;
 }
 
-.holder{
+.title {
+    border-bottom: 2px solid sandybrown;
+}
 
+#app h3 {
+    display: inline;
 }
 
 .entry{
     background: #972131 ;
-}
-
-#entryHolder{
-
-}
-
-#date{
-
-}
-
-#temp{
-
-}
-
-#content{
-
-}
-
-.headline {
-
-}
-.title{
-
+    text-align: center;
 }
 
 /*  Basic Styling To Override Default For Basic HTML Elements */
